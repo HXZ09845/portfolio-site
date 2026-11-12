@@ -1,0 +1,134 @@
+/* v0.113 — real artifacts lead; the reading notes sit around them. */
+#projects .section-heading{margin-bottom:44px}
+#projects .project-grid{gap:38px}
+#projects .project-card{border-radius:10px;box-shadow:none;border:0;background:transparent;overflow:visible}
+#projects .project-card:hover{transform:none;box-shadow:none}
+#projects .project-card .project-visual{border-radius:8px;overflow:hidden;height:300px;padding:24px 20px 0;background:#eaf0ec}
+#projects .project-visual .visual-label,#projects .project-visual .mini-flow,#projects .project-visual .format-tabs{display:none}
+#projects .project-visual.notv-visual>img,#projects .project-visual.studio-visual>img{position:static;width:100%;max-width:none;height:100%;margin:0;border-radius:5px 5px 0 0;object-fit:cover;object-position:top;box-shadow:0 8px 24px #27322e0c;transform:none;transition:transform .25s ease}
+#projects .project-card:hover .notv-visual>img,#projects .project-card:hover .studio-visual>img{transform:translateY(-4px)}
+#projects .project-card .project-info{padding:22px 0 0}
+#projects .project-info .card-meta{font-size:11px;letter-spacing:.04em}
+#projects .project-info h3.highlighted-project-name{font-family:var(--display);font-size:29px;line-height:1.3;align-items:flex-start;margin:12px 0 16px;gap:18px}
+#projects .project-title-highlight{background:transparent;padding:0;border-radius:0;line-height:1.3}
+#projects .project-name-explanation{display:block;font:400 13px/1.7 var(--body);margin-top:8px;color:var(--muted)}
+#projects .project-info h3 .project-name-explanation{font-size:13px;font-weight:400;display:table;background:#e5eddd;padding:2px 5px}
+#projects .highlighted-project-name>span{font-size:23px;color:var(--accent)}
+#projects .project-info p{font-size:14px;line-height:1.8;max-width:36em;color:var(--ink)}
+#projects .project-info .card-footer{margin-top:18px;padding-top:14px;align-items:start;font-size:12px;color:var(--muted);gap:18px}
+#projects .card-footer>span:first-child{max-width:30em}
+#projects .card-footer>span:last-child{white-space:nowrap;color:var(--accent)}
+#projects .work-project-grid>[data-detail="yogurt"]{margin-top:10px;gap:34px;border-block:1px solid var(--line);padding:34px 0}
+#projects .work-project-grid>[data-detail="yogurt"] .project-visual{height:260px;padding:22px;display:flex;flex-direction:column;justify-content:space-between}
+#projects .yogurt-visual .visual-label{display:flex;padding:0}
+#projects .yogurt-visual .visual-label>span{display:none}
+#projects .yogurt-visual .case-brand-logo{max-width:150px;width:42%;height:auto}
+#projects .yogurt-visual .project-business-summary{font-size:clamp(23px,2.3vw,32px);line-height:1.6;padding:0;margin:25px 0 0}
+#projects .work-project-grid>[data-detail="yogurt"] .project-info{padding:0}
+#projects .personal-project-card{gap:32px}
+#projects .personal-project-card .project-visual{padding:0}
+#projects .personal-project-card .project-info{padding:10px 0}
+
+/* Only project cases use the wider canvas; notebook and skill dialogs keep their layout. */
+dialog.project-story-dialog{width:min(1120px,calc(100% - 48px));max-height:94dvh;border-radius:10px;background:#fafcfb;box-shadow:0 24px 90px #20352c30}
+dialog.project-story-dialog::backdrop{background:#263d3459;backdrop-filter:blur(5px)}
+.project-story-dialog .dialog-top{padding:13px 32px;background:#fafcfbf5;backdrop-filter:blur(10px)}
+.project-story-dialog .dialog-top>span{font:11px var(--body);letter-spacing:.03em;color:var(--accent)}
+.project-story-dialog .dialog-top button{background:transparent;border:1px solid var(--line);padding:5px 12px;border-radius:4px}
+.project-story-dialog #dialog-body{padding:32px 52px 42px}
+.story-heading{margin-bottom:24px}
+.story-heading>p{font-size:11px;letter-spacing:.04em;color:var(--muted);margin-bottom:10px}
+.project-story-dialog #dialog-title{font:600 clamp(28px,3.3vw,42px)/1.25 var(--display);letter-spacing:-1px;margin:0;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.project-story-dialog #dialog-title small{font:400 14px/1.6 var(--body);letter-spacing:0;color:var(--muted)}
+.story-recording,.story-figure{margin:0;min-width:0}
+.story-recording video{display:block;width:100%;height:auto;aspect-ratio:16/9;max-height:52dvh;object-fit:contain;background:#17211c;border-radius:5px}
+.story-recording figcaption,.story-figure figcaption{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:11px;line-height:1.7;color:var(--muted);padding:11px 0 0}
+.story-recording figcaption strong{font-weight:600;color:var(--ink)}
+.story-recording figcaption a,.story-figure figcaption a{color:var(--accent)}
+.story-source{font-size:10px;line-height:1.8;color:var(--muted);margin:4px 0 0}
+.story-figure>a{display:block;background:#eaf0ec;padding:16px;border-radius:5px}
+.story-figure img{display:block;width:100%;max-height:52dvh;object-fit:contain;object-position:center;border-radius:3px}
+.story-screen-switch{display:flex;gap:24px;align-items:center;border-bottom:1px solid var(--line);margin-bottom:16px}
+.story-screen-switch button{background:none;border-bottom:2px solid transparent;padding:8px 0 11px;color:var(--muted);font-size:13px}
+.story-screen-switch button[aria-pressed="true"]{border-color:var(--accent);color:var(--ink);font-weight:600}
+.story-screen[hidden]{display:none}
+.story-image-note{font-size:13px;color:var(--ink);line-height:1.8;margin:10px 0 0}
+/* Problem and contribution must be visible beside the evidence on entry. */
+.story-overview{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,1fr);gap:32px;align-items:start}
+.story-primary-media{grid-column:1;grid-row:1;min-width:0}
+.story-first-read{grid-column:2;grid-row:1;min-width:0;padding:4px 0}
+.story-first-read h3{font:550 24px/1.55 var(--display);letter-spacing:-.4px;margin:0 0 24px}
+.story-first-read dl{margin:0}
+.story-first-read dl>div+div{margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.story-first-read dt{font-size:12px;color:var(--accent);font-weight:600;margin-bottom:8px}
+.story-first-read dd{margin:0;font-size:14px;line-height:1.85;color:var(--ink)}
+.story-overview .story-recording video{max-height:none}
+.story-overview .story-figure img{max-height:none}
+.story-overview .story-figure>a{padding:10px}
+.story-label{font-size:11px;color:var(--accent);display:block;margin-bottom:12px}
+.story-impact{margin-top:22px;padding:16px 0 0;border-top:2px solid var(--accent)}
+.story-impact h4{font-size:12px;font-weight:600;color:var(--accent);margin:0 0 9px}
+.story-impact .story-value{font:600 21px/1.5 var(--display);letter-spacing:-.3px;color:var(--ink)}
+.story-value-note{font-size:12px;line-height:1.8;color:var(--muted);margin-top:5px}
+.story-deliverables{font-size:12px;line-height:1.8;color:var(--muted);margin-top:10px}
+.story-deliverables>span{color:var(--accent);font-weight:600;margin-right:9px}
+.story-flow{margin:34px 0}
+.story-flow ol{display:grid;grid-template-columns:1fr 1.55fr 1.2fr;gap:24px;list-style:none;margin:0;padding:20px 24px;background:#eaf0ec;border-radius:3px}
+.story-flow li{min-width:0;position:relative}
+.story-flow li:not(:last-child):after{content:'→';position:absolute;right:-16px;top:26px;color:var(--accent);font-size:14px}
+.story-flow li>span{font:11px var(--body);color:var(--accent)}
+.story-flow li p{font-size:12px;line-height:1.8;margin-top:6px}
+.story-judgment{display:grid;grid-template-columns:130px 1fr;gap:20px;margin:32px 0 40px;align-items:baseline}
+.story-judgment .story-label{margin:0}
+.story-judgment p{font-size:17px;line-height:1.8;font-weight:500;max-width:36em}
+.story-footnotes{margin-top:40px}
+.story-archive{border-top:1px solid var(--line)}
+.story-archive>summary{display:flex;align-items:center;gap:22px;padding:20px 0;font-size:14px;font-weight:500;list-style:none;cursor:pointer}
+.story-archive>summary::-webkit-details-marker{display:none}
+.story-archive>summary>span{font-size:11px;font-weight:400;color:var(--muted);flex:1}
+.story-archive>summary:after{content:'＋';font-size:17px;color:var(--accent);margin-left:auto}
+.story-archive[open]>summary:after{content:'−'}
+.story-archive-body{padding:0 0 32px}
+.story-archive-body .project-brief{margin-top:0}
+.story-links{display:flex;flex-wrap:wrap;gap:14px 28px;margin-top:22px;font-size:12px;color:var(--accent)}
+.story-links button{background:none;font:inherit;padding:0;color:inherit;text-align:left}
+.project-story :is(button,a,summary):focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+@media(max-width:760px){
+ #projects .project-grid{gap:30px}
+ #projects .project-card .project-visual{height:230px;padding:18px 14px 0}
+ #projects .project-info h3.highlighted-project-name{font-size:25px}
+ #projects .project-info p{font-size:13px}
+ #projects .work-project-grid>[data-detail="yogurt"]{padding:26px 0}
+ #projects .work-project-grid>[data-detail="yogurt"] .project-info{padding-top:22px}
+ #projects .personal-project-card{gap:0}
+ #projects .personal-project-card .project-info{padding-top:20px}
+ dialog.project-story-dialog{width:calc(100% - 16px);max-height:96dvh;border-radius:7px}
+ .project-story-dialog .dialog-top{padding:12px 18px}
+ .project-story-dialog #dialog-body{padding:22px 20px 30px}
+ .project-story-dialog #dialog-title{gap:7px;font-size:29px;letter-spacing:-.7px}
+ .project-story-dialog #dialog-title small{font-size:12px;width:100%}
+ .story-recording video{max-height:none}
+ .story-figure>a{padding:8px}
+ .story-screen-switch{gap:22px}
+ .story-screen-switch button{font-size:12px;white-space:nowrap}
+ .story-overview{display:flex;flex-direction:column;gap:24px}
+ .story-first-read,.story-primary-media{width:100%}
+ .story-first-read{padding:0}
+ .story-first-read h3{font-size:21px;line-height:1.5;margin-bottom:18px}
+ .story-first-read dd{font-size:13px;line-height:1.8}
+ .story-first-read dl>div+div{margin-top:15px;padding-top:15px}
+ .story-first-read dt{margin-bottom:6px}
+ .story-impact{margin-top:18px;padding-top:14px}
+ .story-impact .story-value{font-size:20px}
+ .story-flow{margin:26px 0}
+ .story-flow ol{grid-template-columns:1fr;gap:17px;padding:20px}
+ .story-flow li{display:grid;grid-template-columns:40px 1fr;gap:10px}
+ .story-flow li p{margin:0}
+ .story-flow li:not(:last-child):after{display:none}
+ .story-judgment{grid-template-columns:1fr;gap:8px;margin:24px 0}
+ .story-judgment p{font-size:16px}
+ .story-footnotes{margin-top:28px}
+ .story-archive>summary{flex-wrap:wrap;gap:5px 10px;font-size:13px}
+ .story-archive>summary>span{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){#projects .project-visual>img{transition:none!important;transform:none!important}}
