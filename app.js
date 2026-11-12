@@ -286,7 +286,11 @@ window.addEventListener('hashchange',()=>{
   const view=Object.hasOwn(viewNames,requested)?requested:'home';
   if(view!==previousView)routeView();
 });
-document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!dialog.open&&!event.defaultPrevented&&!sectionBrowser.hidden){location.hash='home';}});
+document.addEventListener('keydown',event=>{
+  if(event.key!=='Escape'||event.defaultPrevented||dialog.open||sectionBrowser.hidden)return;
+  if(event.target.matches('input[type="search"]'))return;
+  location.hash='home';
+});
 renderSkills();
 renderNotebook();
 routeView();
