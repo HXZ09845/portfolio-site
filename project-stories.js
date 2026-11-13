@@ -14,7 +14,7 @@ const projectStories = {
     focus:'把商品约束和素材引用写进 Skill，让每次修改有明确的落点。'
   },
   nostudio: {
-    name:'NoStudio', descriptor:'品牌内容创作与协作平台', context:'NoDesk AI · 商品与素材规则实践',
+    name:'NoStudio', descriptor:'品牌 AI 设计工作空间', context:'NoDesk AI · 商品与素材规则实践',
     thesis:'让商品资料，成为创作时真正可用的上下文。',
     problem:'品牌团队的商品资料、素材、创作与审核分散，容易混用素材、反复沟通，生产问题难定位。',
     role:'梳理商品、素材与 Skill 的关联规则，把生产问题转成需求、复现步骤和验收条件，协同研发联调。',
@@ -107,7 +107,7 @@ function renderProjectStory(id){
     <section class="story-flow" aria-label="输入、过程与输出"><ol>${s.steps.map(([label,text])=>`<li><span>${e(label)}</span><p>${e(text)}</p></li>`).join('')}</ol></section>
     ${renderStoryEvidence(id)}
     <aside class="story-judgment"><span class="story-label">一个关键判断</span><p>${e(s.focus)}</p></aside>
-    <div class="story-footnotes"><details class="story-archive"><summary>项目档案 <span>完整职责、设计判断与交付依据</span></summary><div class="story-archive-body">${recordBody}</div></details>${extraRecordings}<div class="story-links">${id==='notv'?'<button data-detail="model-boundaries">模型选型与审美判断 ↗</button>':''}${p.url?`<a href="${e(p.url)}" target="_blank" rel="noopener">查看项目仓库 ↗</a>`:''}${links}</div></div>
+    <div class="story-footnotes">${links?`<div class="story-links">${links}</div>`:''}<details class="story-archive"><summary>项目档案 <span>完整职责、设计判断与交付依据</span></summary><div class="story-archive-body">${recordBody}</div></details>${extraRecordings}<div class="story-links">${id==='notv'?'<button data-detail="model-boundaries">模型选型与审美判断 ↗</button>':''}${p.url?`<a href="${e(p.url)}" target="_blank" rel="noopener">查看项目仓库 ↗</a>`:''}</div></div>
   </article>`;
 }
 
