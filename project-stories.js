@@ -7,8 +7,8 @@ const projectStories = {
     thesis:'让视频生产，从逐条操作走向批量协作。',
     problem:'视频生产要在脚本、素材与生成工具间反复切换，同类商品逐条配置，返修成本高。',
     role:'从 0 到 1 定义早期流程，构建 SKU Skill / Meta Skill，完成测试与团队培训；与算法工程团队协作推进。',
-    value:'商品幻觉率降低约 60%',
-    valueNote:'并发提交减少等待，商品约束减少重试。',
+    value:'减少商品失真和重复生成',
+    valueNote:'先验证代表性任务，再并发提交。',
     deliverables:'SKU / Meta Skill · 生产流程 · 团队培训',
     steps:[['输入','脚本、商品资料、参考素材'],['过程','Skill 编排 → 审核计划 → CLI / MCP 并发生成'],['输出','视频素材与修改记录；自然语言返修后复用规则']],
     focus:'把商品约束和素材引用写进 Skill，让每次修改有明确的落点。'
@@ -67,6 +67,34 @@ function storyMedia(id,project){
   return storyFigure(project.image,project.alt,'产品概念图 · 实现说明见项目档案');
 }
 
+function renderStoryEvidence(id){
+  if(id==='notv'){
+    return `<section class="story-evidence" aria-label="分镜审核与批量生成">
+      <h3>为什么先审分镜，再批量生成？</h3>
+      <p>一次素材引用错误会影响整批镜头。我在早期流程里把脚本、商品约束和参考素材放进 Plan，提交前先核对关键镜头。</p>
+      <div class="story-chapters" aria-label="跳转到录屏片段">
+        <button type="button" data-story-time="120">2:00 · 查看脚本与素材如何进入 Plan</button>
+        <button type="button" data-story-time="150">2:30 · 提交任务并轮询</button>
+        <button type="button" data-story-time="195">3:15 · 查看生成结果</button>
+      </div>
+      <p class="story-source">录屏演示素材编排、提交与结果回看。P0 需求稿另外定义了首条验证与局部返修，底层功能由研发实现。</p>
+    </section>`;
+  }
+  if(id==='nostudio'){
+    return `<section class="story-evidence" aria-label="素材规则与验收">
+      <h3>换了 SKU，哪些素材要重新绑定？</h3>
+      <p>上方的商品资产界面里，牙膏商品卡显示已有 7 份素材。复盘该商品详情时，正面、侧面、背面三个必填素材槽位仍显示 0/3。文件上传后，还要按款式和用途建立绑定。</p>
+      <dl class="story-asset-rules">
+        <div><dt>商品外观</dt><dd>换 SKU 后重新绑定包装、颜色和结构参考，按新商品核对。</dd></div>
+        <div><dt>场景与动作</dt><dd>通用环境图按任务复用。商品特写和使用动作引用新款对应的参考素材。</dd></div>
+        <div><dt>验收示例</dt><dd>检查目标 SKU、素材用途和必填槽位。核对换款后的任务是否仍引用旧款素材。</dd></div>
+      </dl>
+      <p class="story-source">我的交付包括素材关联规则、异常复现步骤和验收条件。联调时曾遇到预检通过但参考视频生成被拒，后续分别核对真实生成、结果回读与计费。</p>
+    </section>`;
+  }
+  return '';
+}
+
 function renderProjectStory(id){
   const e=escapeHTML,s=projectStories[id],p=projects[id];
   const sections=p.sections.map(([title,text])=>`<section class="detail-section"><h3>${e(title)}</h3><p>${e(text)}</p></section>`).join('');
@@ -77,12 +105,22 @@ function renderProjectStory(id){
     <header class="story-heading"><p>${e(s.context)}</p><h2 id="dialog-title">${e(s.name)}<small>（${e(s.descriptor)}）</small></h2></header>
     <div class="story-overview"><section class="story-first-read" aria-label="项目问题、职责与价值"><h3>${e(s.thesis)}</h3><dl><div><dt>解决什么问题</dt><dd>${e(s.problem)}</dd></div><div><dt>我做了什么</dt><dd>${e(s.role)}</dd></div></dl><section class="story-impact" aria-label="交付产物与价值"><h4>带来什么价值</h4><p class="story-value">${e(s.value)}</p>${s.valueNote?`<p class="story-value-note">${e(s.valueNote)}</p>`:''}<p class="story-deliverables"><span>交付</span>${e(s.deliverables)}</p></section></section><div class="story-primary-media">${storyMedia(id,p)}</div></div>
     <section class="story-flow" aria-label="输入、过程与输出"><ol>${s.steps.map(([label,text])=>`<li><span>${e(label)}</span><p>${e(text)}</p></li>`).join('')}</ol></section>
+    ${renderStoryEvidence(id)}
     <aside class="story-judgment"><span class="story-label">一个关键判断</span><p>${e(s.focus)}</p></aside>
     <div class="story-footnotes"><details class="story-archive"><summary>项目档案 <span>完整职责、设计判断与交付依据</span></summary><div class="story-archive-body">${recordBody}</div></details>${extraRecordings}<div class="story-links">${id==='notv'?'<button data-detail="model-boundaries">模型选型与审美判断 ↗</button>':''}${p.url?`<a href="${e(p.url)}" target="_blank" rel="noopener">查看项目仓库 ↗</a>`:''}${links}</div></div>
   </article>`;
 }
 
 document.addEventListener('click',event=>{
+  const chapter=event.target.closest('[data-story-time]');
+  if(chapter){
+    const video=chapter.closest('.project-story').querySelector('.story-recording video');
+    video.currentTime=Number(chapter.dataset.storyTime);
+    video.scrollIntoView({block:'nearest'});
+    video.focus({preventScroll:true});
+    video.play().catch(()=>{});
+    return;
+  }
   const button=event.target.closest('[data-story-screen]');
   if(!button)return;
   const explorer=button.closest('.story-explorer');
